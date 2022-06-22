@@ -14,72 +14,6 @@ import random
 import matplotlib.pyplot as plt
 from numpy.linalg import inv,det
 
-
-class Gaussian():
-    """
-    This class is used to compute a Gaussian Model for face detection
-    The dataset used is FDDB dataset with images samples at 20x20 pixels.
-    
-    """
-    def __init__(self):
-        pass
-        
-    def pdf(self,array_mean,i,mean,cov_matrix):
-        """
-        Parameters
-        ----------
-        array_mean : ndarray
-            A numpy array with Face/Non-Face Image data
-        i : int
-            Number of current image
-        mean : float
-            Mean of Face/ Nonface
-        cov_matrix : ndarray
-            Covariance matrix computed for Face/ Nonface
-
-        Returns
-        -------
-        TYPE
-            float
-
-        """
-        x = array_mean[:,i] - mean
-        num_term = -0.5*np.matmul((np.matmul(x.T,inv(cov_matrix))),x)
-        den_term =np.sqrt(np.power(2*np.pi,len(mean))*det(cov_matrix))
-        
-        return 1.*np.exp(num_term)/den_term
-    
-    def compute_gauss_model(self,face_train_pca,nface_train_pca):
-        """
-
-        Parameters
-        ----------
-        face_train_pca : ndarray
-            Flattened Array for Face
-        nface_train_pca : ndarray
-            Flattened Array for Non-Face
-
-        Returns
-        -------
-        mean_face : float
-            Mean of face Images
-        mean_nface : float
-            Mean for non-face Images
-        cov_face : ndarray
-            Covariance for face Images
-        cov_nface : ndarray
-            Covariance Matrix for non face Images
-
-        """
-        mean_face = np.mean(face_train_pca,axis=1)#face_train_pca.mean(axis=0)
-        mean_nface = np.mean(nface_train_pca,axis=1) #nface_train_pca.mean(axis=0)
-        cv1 = np.cov(face_train_pca,rowvar= True)
-        
-        cov_face = np.diag(np.diag(cv1))
-        cov_nface = np.diag(np.diag(np.cov(nface_train_pca,rowvar= True)))
-        
-        return mean_face,mean_nface,cov_face,cov_nface
-    
 def load_pickle_data():
     """
     Returns
@@ -174,9 +108,71 @@ def compute_posterior(pp_face_f,pp_nonface_f,pp_face_nf,pp_nonface_nf):
     
     return compute_post_face_f, compute_post_nface_f,compute_post_face_nf,compute_post_nface_nf
 
+class Gaussian():
+    """
+    This class is used to compute a Gaussian Model for face detection
+    The dataset used is FDDB dataset with images samples at 20x20 pixels.
     
+    """
+    def __init__(self):
+        pass
+        
+    def pdf(self,array_mean,i,mean,cov_matrix):
+        """
+        Parameters
+        ----------
+        array_mean : ndarray
+            A numpy array with Face/Non-Face Image data
+        i : int
+            Number of current image
+        mean : float
+            Mean of Face/ Nonface
+        cov_matrix : ndarray
+            Covariance matrix computed for Face/ Nonface
 
+        Returns
+        -------
+        TYPE
+            float
 
+        """
+        x = array_mean[:,i] - mean
+        num_term = -0.5*np.matmul((np.matmul(x.T,inv(cov_matrix))),x)
+        den_term =np.sqrt(np.power(2*np.pi,len(mean))*det(cov_matrix))
+        
+        return 1.*np.exp(num_term)/den_term
+    
+    def compute_gauss_model(self,face_train_pca,nface_train_pca):
+        """
+
+        Parameters
+        ----------
+        face_train_pca : ndarray
+            Flattened Array for Face
+        nface_train_pca : ndarray
+            Flattened Array for Non-Face
+
+        Returns
+        -------
+        mean_face : float
+            Mean of face Images
+        mean_nface : float
+            Mean for non-face Images
+        cov_face : ndarray
+            Covariance for face Images
+        cov_nface : ndarray
+            Covariance Matrix for non face Images
+
+        """
+        mean_face = np.mean(face_train_pca,axis=1)#face_train_pca.mean(axis=0)
+        mean_nface = np.mean(nface_train_pca,axis=1) #nface_train_pca.mean(axis=0)
+        cv1 = np.cov(face_train_pca,rowvar= True)
+        
+        cov_face = np.diag(np.diag(cv1))
+        cov_nface = np.diag(np.diag(np.cov(nface_train_pca,rowvar= True)))
+        
+        return mean_face,mean_nface,cov_face,cov_nface
+    
 
 if __name__ == "__main__" :
     
