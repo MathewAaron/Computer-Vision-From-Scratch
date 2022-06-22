@@ -1,4 +1,4 @@
-#Gaussian Model from Scratch in Python
+# Gaussian Model from Scratch in Python
 """
 @author: Aaron
 """
