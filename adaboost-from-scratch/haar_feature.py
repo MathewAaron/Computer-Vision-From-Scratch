@@ -3,11 +3,6 @@
 @author: asmathew@ncsu.edu
 """
 
-# Change path according to directory
-import sys
-sys.path.append('C:/Users/Aaron/Desktop/ECE 763 project/asmathew_project02')
-from dataset.load_data import load_pickle_data
-
 import numpy as np
 import math
 from tqdm import tqdm
