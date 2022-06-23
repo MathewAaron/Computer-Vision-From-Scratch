@@ -5,7 +5,7 @@
 
 ## Adaboost using HAAR features
 
-Developing an EM based Adaboost algorithm using HAAR features.
+Developing an Adaboost algorithm using HAAR features.
 AdaBoost: an abbreviation for Adaptive Boosting uses a subset of features and constructs an array of “weak classifiers”. 
 The weak classifiers are computed by using decision trees / decision “stumps”. 
 Where the error is computed at each iteration and the weights are updated based on those errors to extract the maximum error index.
