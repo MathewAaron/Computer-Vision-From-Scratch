@@ -20,5 +20,11 @@ Developing fundamental Computer Vision algorithms from scratch in Python and C++
 
 ## Gaussian Mixture Model (GMM)
 
+#### Posterior Probability
+![05](https://user-images.githubusercontent.com/71589098/175191573-e0299b9c-dfb7-4552-b18e-0b64e11eb48c.png)
+
+
+#### ROC curve
+![06](https://user-images.githubusercontent.com/71589098/175191597-1988901e-7005-4cf0-b208-3655450009c9.png)
 
 ## T Distribution
