@@ -28,3 +28,9 @@ Developing fundamental Computer Vision algorithms from scratch in Python and C++
 ![06](https://user-images.githubusercontent.com/71589098/175191597-1988901e-7005-4cf0-b208-3655450009c9.png)
 
 ## T Distribution
+
+#### Posterior Probability
+![07](https://user-images.githubusercontent.com/71589098/175192454-b05b2e7c-f516-4dad-836f-5dabc67b7fce.png)
+
+#### ROC curve
+![08](https://user-images.githubusercontent.com/71589098/175192476-80a781a6-1a9a-42c7-a7e8-835a10f6681c.png)
